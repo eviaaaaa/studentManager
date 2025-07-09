@@ -1,32 +1,32 @@
-// StudentGradeInfo.java (å®ä½“ç±»)
+// StudentGradeInfo.java (ÊµÌåÀà)
 
 package com.artisan.model; // Consistent package for entities
 
 import java.util.Objects;
 
 /**
- * StudentGradeInfo å®ä½“ç±»ï¼Œå¯¹åº”æ•°æ®åº“ä¸­çš„ student_grade_info è§†å›¾ã€‚
- * åŒ…å«å­¦å· (studentId), å§“å (studentName), è¯¾ç¨‹ (courseName), æˆç»© (gradeValue)ã€‚
+ * StudentGradeInfo ÊµÌåÀà£¬¶ÔÓ¦Êı¾İ¿âÖĞµÄ student_grade_info ÊÓÍ¼¡£
+ * °üº¬Ñ§ºÅ (studentId), ĞÕÃû (studentName), ¿Î³Ì (courseName), ³É¼¨ (gradeValue)¡£
  */
 public class StudentGradeInfo {
-    private String studentId;   // å­¦å·
-    private String studentName;   // å§“å
-    private String courseName;   // è¯¾ç¨‹åç§°
-    private Integer gradeValue; // æˆç»©
+    private String studentId;   // Ñ§ºÅ
+    private String studentName;   // ĞÕÃû
+    private String courseName;   // ¿Î³ÌÃû³Æ
+    private Integer gradeValue; // ³É¼¨
 
     /**
-     * é»˜è®¤æ„é€ å‡½æ•°
+     * Ä¬ÈÏ¹¹Ôìº¯Êı
      */
     public StudentGradeInfo() {
     }
 
     /**
-     * å¸¦å‚æ•°çš„æ„é€ å‡½æ•°
+     * ´ø²ÎÊıµÄ¹¹Ôìº¯Êı
      *
-     * @param studentId å­¦å·
-     * @param studentName å§“å
-     * @param courseName è¯¾ç¨‹åç§°
-     * @param gradeValue æˆç»©
+     * @param studentId Ñ§ºÅ
+     * @param studentName ĞÕÃû
+     * @param courseName ¿Î³ÌÃû³Æ
+     * @param gradeValue ³É¼¨
      */
     public StudentGradeInfo(String studentId, String studentName, String courseName, Integer gradeValue) {
         this.studentId = studentId;
@@ -35,7 +35,7 @@ public class StudentGradeInfo {
         this.gradeValue = gradeValue;
     }
 
-    // --- Getter æ–¹æ³• ---
+    // --- Getter ·½·¨ ---
 
     public String getStudentId() {
         return studentId;
@@ -53,7 +53,7 @@ public class StudentGradeInfo {
         return gradeValue;
     }
 
-    // --- Setter æ–¹æ³• ---
+    // --- Setter ·½·¨ ---
 
     public void setStudentId(String studentId) {
         this.studentId = studentId;
@@ -71,14 +71,14 @@ public class StudentGradeInfo {
         this.gradeValue = gradeValue;
     }
 
-    // --- é‡å†™ equals(), hashCode(), toString() æ–¹æ³• ---
+    // --- ÖØĞ´ equals(), hashCode(), toString() ·½·¨ ---
 
     /**
-     * é‡å†™ equals æ–¹æ³•ï¼ŒåŸºäº studentId å’Œ courseName åˆ¤æ–­ä¸¤ä¸ª StudentGradeInfo å¯¹è±¡æ˜¯å¦ç›¸ç­‰ã€‚
-     * (å‡è®¾ studentId å’Œ courseName çš„ç»„åˆåœ¨è§†å›¾ä¸­æ˜¯å”¯ä¸€çš„ï¼Œæˆ–è€…è¶³ä»¥åŒºåˆ†è®°å½•)
+     * ÖØĞ´ equals ·½·¨£¬»ùÓÚ studentId ºÍ courseName ÅĞ¶ÏÁ½¸ö StudentGradeInfo ¶ÔÏóÊÇ·ñÏàµÈ¡£
+     * (¼ÙÉè studentId ºÍ courseName µÄ×éºÏÔÚÊÓÍ¼ÖĞÊÇÎ¨Ò»µÄ£¬»òÕß×ãÒÔÇø·Ö¼ÇÂ¼)
      *
-     * @param o æ¯”è¾ƒå¯¹è±¡
-     * @return å¦‚æœç›¸ç­‰åˆ™è¿”å› trueï¼Œå¦åˆ™è¿”å› false
+     * @param o ±È½Ï¶ÔÏó
+     * @return Èç¹ûÏàµÈÔò·µ»Ø true£¬·ñÔò·µ»Ø false
      */
     @Override
     public boolean equals(Object o) {
@@ -89,9 +89,9 @@ public class StudentGradeInfo {
     }
 
     /**
-     * é‡å†™ hashCode æ–¹æ³•ï¼ŒåŸºäº studentId å’Œ courseName ç”Ÿæˆå“ˆå¸Œç ã€‚
+     * ÖØĞ´ hashCode ·½·¨£¬»ùÓÚ studentId ºÍ courseName Éú³É¹şÏ£Âë¡£
      *
-     * @return å“ˆå¸Œç 
+     * @return ¹şÏ£Âë
      */
     @Override
     public int hashCode() {
@@ -99,9 +99,9 @@ public class StudentGradeInfo {
     }
 
     /**
-     * é‡å†™ toString æ–¹æ³•ï¼Œæ–¹ä¾¿æ‰“å° StudentGradeInfo å¯¹è±¡ä¿¡æ¯ã€‚
+     * ÖØĞ´ toString ·½·¨£¬·½±ã´òÓ¡ StudentGradeInfo ¶ÔÏóĞÅÏ¢¡£
      *
-     * @return StudentGradeInfo å¯¹è±¡çš„å­—ç¬¦ä¸²è¡¨ç¤º
+     * @return StudentGradeInfo ¶ÔÏóµÄ×Ö·û´®±íÊ¾
      */
     @Override
     public String toString() {

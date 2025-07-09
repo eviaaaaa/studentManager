@@ -1,14 +1,14 @@
 package com.artisan.util;
 
 /**
- * ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ???????????
  * @author Administrator
  *
  */
 public class StringUtil {
 
 	/**
-	 * ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½Ç¿ï¿½
+	 * ?§Ø???????
 	 * @param str
 	 * @return
 	 */
@@ -17,7 +17,7 @@ public class StringUtil {
 	}
 	
 	/**
-	 * ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½Ç¿ï¿½
+	 * ?§Ø???????
 	 * @param str
 	 * @return
 	 */

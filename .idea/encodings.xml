@@ -2,7 +2,11 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/src/com/artisan/dao/StudentBasicInfoDAO.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/artisan/dao/StudentGradeInfoDAO.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/artisan/model/StudentBasicInfo.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/artisan/model/StudentGradeInfo.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/com/artisan/util/DbUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/artisan/util/StringUtil.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/com/artisan/view/FirstView.java" charset="GBK" />
     <file url="PROJECT" charset="GBK" />
   </component>

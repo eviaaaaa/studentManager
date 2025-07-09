@@ -1,6 +1,6 @@
 package com.artisan.dao;
 
-// StudentGradeInfoDAO.java (DAO ç±»)
+// StudentGradeInfoDAO.java (DAO Àà)
 
 import com.artisan.model.StudentGradeInfo;
 
@@ -12,21 +12,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * StudentGradeInfoDAO æ˜¯ä¸€ä¸ª JDBC æ•°æ®è®¿é—®å¯¹è±¡ç±»ï¼Œç”¨äºæŸ¥è¯¢ student_grade_info è§†å›¾ã€‚
- * æ•°æ®åº“è¿æ¥ç”±å¤–éƒ¨ä¼ å…¥ï¼Œä¸å†åœ¨ DAO å†…éƒ¨ç®¡ç†ã€‚
+ * StudentGradeInfoDAO ÊÇÒ»¸ö JDBC Êı¾İ·ÃÎÊ¶ÔÏóÀà£¬ÓÃÓÚ²éÑ¯ student_grade_info ÊÓÍ¼¡£
+ * Êı¾İ¿âÁ¬½ÓÓÉÍâ²¿´«Èë£¬²»ÔÙÔÚ DAO ÄÚ²¿¹ÜÀí¡£
  */
 public class StudentGradeInfoDAO {
 
     /**
-     * è·å–æ‰€æœ‰å­¦ç”Ÿæˆç»©ä¿¡æ¯ã€‚
+     * »ñÈ¡ËùÓĞÑ§Éú³É¼¨ĞÅÏ¢¡£
      *
-     * @param con æ•°æ®åº“è¿æ¥
-     * @return åŒ…å«æ‰€æœ‰ StudentGradeInfo å¯¹è±¡çš„åˆ—è¡¨
-     * @throws SQLException å¦‚æœå‘ç”Ÿæ•°æ®åº“è®¿é—®é”™è¯¯
+     * @param con Êı¾İ¿âÁ¬½Ó
+     * @return °üº¬ËùÓĞ StudentGradeInfo ¶ÔÏóµÄÁĞ±í
+     * @throws SQLException Èç¹û·¢ÉúÊı¾İ¿â·ÃÎÊ´íÎó
      */
     public List<StudentGradeInfo> getAllStudentGradeInfo(Connection con) throws SQLException {
-        // Note: The SQL aliases (å­¦å·, å§“å, è¯¾ç¨‹, æˆç»©) are used here as column names in the ResultSet
-        String sql = "SELECT å­¦å·, å§“å, è¯¾ç¨‹, æˆç»© FROM student_grade_info";
+        // Note: The SQL aliases (Ñ§ºÅ, ĞÕÃû, ¿Î³Ì, ³É¼¨) are used here as column names in the ResultSet
+        String sql = "SELECT Ñ§ºÅ, ĞÕÃû, ¿Î³Ì, ³É¼¨ FROM student_grade_info";
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         List<StudentGradeInfo> gradeInfoList = new ArrayList<>();
@@ -35,10 +35,10 @@ public class StudentGradeInfoDAO {
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 StudentGradeInfo info = new StudentGradeInfo();
-                info.setStudentId(rs.getString("å­¦å·"));
-                info.setStudentName(rs.getString("å§“å"));
-                info.setCourseName(rs.getString("è¯¾ç¨‹"));
-                info.setGradeValue(rs.getInt("æˆç»©"));
+                info.setStudentId(rs.getString("Ñ§ºÅ"));
+                info.setStudentName(rs.getString("ĞÕÃû"));
+                info.setCourseName(rs.getString("¿Î³Ì"));
+                info.setGradeValue(rs.getInt("³É¼¨"));
                 gradeInfoList.add(info);
             }
             return gradeInfoList;
@@ -61,15 +61,15 @@ public class StudentGradeInfoDAO {
     }
 
     /**
-     * æ ¹æ®å­¦å·è·å–æŸå­¦ç”Ÿçš„æ‰€æœ‰æˆç»©ä¿¡æ¯ã€‚
+     * ¸ù¾İÑ§ºÅ»ñÈ¡Ä³Ñ§ÉúµÄËùÓĞ³É¼¨ĞÅÏ¢¡£
      *
-     * @param con  æ•°æ®åº“è¿æ¥
-     * @param studentId å­¦ç”Ÿå­¦å·
-     * @return åŒ…å«è¯¥å­¦ç”Ÿæ‰€æœ‰æˆç»©çš„ StudentGradeInfo å¯¹è±¡çš„åˆ—è¡¨
-     * @throws SQLException å¦‚æœå‘ç”Ÿæ•°æ®åº“è®¿é—®é”™è¯¯
+     * @param con  Êı¾İ¿âÁ¬½Ó
+     * @param studentId Ñ§ÉúÑ§ºÅ
+     * @return °üº¬¸ÃÑ§ÉúËùÓĞ³É¼¨µÄ StudentGradeInfo ¶ÔÏóµÄÁĞ±í
+     * @throws SQLException Èç¹û·¢ÉúÊı¾İ¿â·ÃÎÊ´íÎó
      */
     public List<StudentGradeInfo> getStudentGradeInfoByStudentId(Connection con, String studentId) throws SQLException {
-        String sql = "SELECT å­¦å·, å§“å, è¯¾ç¨‹, æˆç»© FROM student_grade_info WHERE å­¦å· = ?";
+        String sql = "SELECT Ñ§ºÅ, ĞÕÃû, ¿Î³Ì, ³É¼¨ FROM student_grade_info WHERE Ñ§ºÅ = ?";
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         List<StudentGradeInfo> gradeInfoList = new ArrayList<>();
@@ -79,10 +79,10 @@ public class StudentGradeInfoDAO {
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 StudentGradeInfo info = new StudentGradeInfo();
-                info.setStudentId(rs.getString("å­¦å·"));
-                info.setStudentName(rs.getString("å§“å"));
-                info.setCourseName(rs.getString("è¯¾ç¨‹"));
-                info.setGradeValue(rs.getInt("æˆç»©"));
+                info.setStudentId(rs.getString("Ñ§ºÅ"));
+                info.setStudentName(rs.getString("ĞÕÃû"));
+                info.setCourseName(rs.getString("¿Î³Ì"));
+                info.setGradeValue(rs.getInt("³É¼¨"));
                 gradeInfoList.add(info);
             }
             return gradeInfoList;

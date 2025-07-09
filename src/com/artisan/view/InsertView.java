@@ -2,6 +2,8 @@ package com.artisan.view;
 
 import com.artisan.dao.*;
 import com.artisan.model.*;
+import com.artisan.util.ConsoleUtil;
+import com.artisan.util.InputValidator;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -31,30 +33,11 @@ public class InsertView {
 
         int insertChoice;
         do {
-            System.out.println("\n********************************************");
-            System.out.println("************** 请选择插入项目 ***************");
-            System.out.println("********************************************");
-            System.out.println("选择输入：");
-            System.out.println("*********** '1': 插入院系信息 ************");
-            System.out.println("*********** '2': 插入专业信息 ************");
-            System.out.println("*********** '3': 插入班级信息 ************");
-            System.out.println("*********** '4': 插入学生信息 ************");
-            System.out.println("*********** '5': 插入课程信息 ************");
-            System.out.println("*********** '6': 插入成绩信息 ************");
-            System.out.println("*********** '7': 插入奖惩信息 ************");
-            System.out.println("*********** '0': 返回主菜单 ************");
-            System.out.println("********************************************");
-            System.out.print("请选择要进行的业务: ");
+            // 显示插入菜单
+            showInsertMenu();
 
-            try {
-                insertChoice = scanner.nextInt();
-                scanner.nextLine(); // 消费掉换行符
-            } catch (InputMismatchException e) {
-                System.out.println("无效输入，请输入数字。");
-                scanner.nextLine(); // 消费掉错误的输入
-                insertChoice = -1; // 设置为无效选择，重新循环
-                continue;
-            }
+            // 读取用户输入
+            insertChoice = InputValidator.readInt(scanner, "", 0, 7);
 
             switch (insertChoice) {
                 case 1: // 插入院系
@@ -116,60 +99,33 @@ public class InsertView {
                     }
                     break;
                 case 4: // 插入学生
-                    System.out.println("\n--- 插入学生信息 ---");
-                    System.out.print("请输入学生ID (id): ");
-                    String studentId = scanner.nextLine();
-                    System.out.print("请输入姓名 (name): ");
-                    String studentName = scanner.nextLine();
-                    System.out.print("请输入性别 (sex, 例如: 男/女): ");
-                    String studentSex = scanner.nextLine();
-                    System.out.print("请输入班级ID (cid, 可为空): ");
-                    String studentCid = scanner.nextLine();
-                    if (studentCid.isEmpty()) studentCid = null;
-                    System.out.print("请输入专业ID (mid, 可为空): ");
-                    String studentMid = scanner.nextLine();
-                    if (studentMid.isEmpty()) studentMid = null;
-                    System.out.print("请输入院系ID (did, 可为空): ");
-                    String studentDid = scanner.nextLine();
-                    if (studentDid.isEmpty()) studentDid = null;
-                    System.out.print("请输入民族 (nation): ");
-                    String studentNation = scanner.nextLine();
-                    System.out.print("请输入年龄 (age): ");
-                    int studentAge = 0;
+                    ConsoleUtil.printTitle("插入学生信息");
                     try {
-                        studentAge = scanner.nextInt();
-                        scanner.nextLine();
-                    } catch (InputMismatchException e) {
-                        System.out.println("年龄输入无效，请重新输入。");
-                        scanner.nextLine();
-                        break;
-                    }
-                    System.out.print("请输入生日 (birthday, 格式:yyyy-MM-dd): ");
-                    String birthdayStr = scanner.nextLine();
-                    Date studentBirthday = null;
-                    try {
-                        studentBirthday = DATE_FORMAT.parse(birthdayStr);
-                    } catch (ParseException e) {
-                        System.out.println("生日日期格式不正确，请重新输入。");
-                        break;
-                    }
-                    System.out.print("请输入所在地 (location): ");
-                    String studentLocation = scanner.nextLine();
-                    System.out.print("请输入入学日期 (enroll, 格式:yyyy-MM-dd): ");
-                    String enrollStr = scanner.nextLine();
-                    Date studentEnroll = null;
-                    try {
-                        studentEnroll = DATE_FORMAT.parse(enrollStr);
-                    } catch (ParseException e) {
-                        System.out.println("入学日期格式不正确，请重新输入。");
-                        break;
-                    }
-                    Student newStudent = new Student(studentId, studentName, studentSex, studentCid, studentMid, studentDid,
-                            studentNation, studentAge, studentBirthday, studentLocation, studentEnroll);
-                    if (studentDAO.addStudent(con, newStudent) > 0) {
-                        System.out.println("学生插入成功: " + newStudent);
-                    } else {
-                        System.out.println("学生插入失败。");
+                        String studentId = InputValidator.readId(scanner, "请输入学生ID: ");
+                        String studentName = InputValidator.readString(scanner, "请输入姓名: ", false, 30);
+                        String studentSex = InputValidator.readGender(scanner, "请输入性别");
+                        String studentCid = InputValidator.readString(scanner, "请输入班级ID (可为空): ", true, 30);
+                        if (studentCid.isEmpty()) studentCid = null;
+                        String studentMid = InputValidator.readString(scanner, "请输入专业ID (可为空): ", true, 30);
+                        if (studentMid.isEmpty()) studentMid = null;
+                        String studentDid = InputValidator.readString(scanner, "请输入院系ID (可为空): ", true, 30);
+                        if (studentDid.isEmpty()) studentDid = null;
+                        String studentNation = InputValidator.readString(scanner, "请输入民族: ", false, 20);
+                        int studentAge = InputValidator.readAge(scanner, "请输入年龄: ");
+                        Date studentBirthday = InputValidator.readDate(scanner, "请输入生日");
+                        String studentLocation = InputValidator.readString(scanner, "请输入所在地: ", false, 20);
+                        Date studentEnroll = InputValidator.readDate(scanner, "请输入入学日期");
+
+                        Student newStudent = new Student(studentId, studentName, studentSex, studentCid, studentMid, studentDid,
+                                studentNation, studentAge, studentBirthday, studentLocation, studentEnroll);
+
+                        if (studentDAO.addStudent(con, newStudent) > 0) {
+                            ConsoleUtil.printSuccess("学生插入成功: " + newStudent);
+                        } else {
+                            ConsoleUtil.printError("学生插入失败。");
+                        }
+                    } catch (Exception e) {
+                        ConsoleUtil.printError("插入学生信息时发生错误: " + e.getMessage());
                     }
                     break;
                 case 5: // 插入课程
@@ -260,9 +216,26 @@ public class InsertView {
                     break;
             }
             if (insertChoice != 0) {
-                System.out.println("\n按 Enter 键继续...");
-                scanner.nextLine();
+                ConsoleUtil.waitForEnter(scanner);
             }
         } while (insertChoice != 0);
+    }
+
+    /**
+     * 显示插入菜单选项
+     */
+    private static void showInsertMenu() {
+        String[] menuOptions = {
+            "1 - 插入院系信息",
+            "2 - 插入专业信息",
+            "3 - 插入班级信息",
+            "4 - 插入学生信息",
+            "5 - 插入课程信息",
+            "6 - 插入成绩信息",
+            "7 - 插入奖惩信息",
+            "0 - 返回主菜单"
+        };
+
+        ConsoleUtil.printMenu("数据插入菜单", menuOptions);
     }
 }

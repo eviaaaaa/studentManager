@@ -1,34 +1,34 @@
 package com.artisan.model;
 
-// StudentBasicInfo.java (å®ä½“ç±»)
+// StudentBasicInfo.java (ÊµÌåÀà)
 
 import java.util.Objects;
 
 /**
- * StudentBasicInfo å®ä½“ç±»ï¼Œå¯¹åº”æ•°æ®åº“ä¸­çš„ student_basic_info è§†å›¾ã€‚
- * åŒ…å«å­¦å· (studentId), å§“å (name), ç­çº§ç¼–å· (classId), ä¸“ä¸šç¼–å· (majorId), é™¢ç³»ç¼–å· (departmentId)ã€‚
+ * StudentBasicInfo ÊµÌåÀà£¬¶ÔÓ¦Êı¾İ¿âÖĞµÄ student_basic_info ÊÓÍ¼¡£
+ * °üº¬Ñ§ºÅ (studentId), ĞÕÃû (name), °à¼¶±àºÅ (classId), ×¨Òµ±àºÅ (majorId), ÔºÏµ±àºÅ (departmentId)¡£
  */
 public class StudentBasicInfo {
-    private String studentId;     // å­¦å· (å¯¹åº” student.id)
-    private String name;     // å§“å (å¯¹åº” student.name)
-    private String classId;   // ç­çº§ç¼–å· (å¯¹åº” student.cid)
-    private String majorId;   // ä¸“ä¸šç¼–å· (å¯¹åº” student.mid)
-    private String departmentId;   // é™¢ç³»ç¼–å· (å¯¹åº” student.did)
+    private String studentId;     // Ñ§ºÅ (¶ÔÓ¦ student.id)
+    private String name;     // ĞÕÃû (¶ÔÓ¦ student.name)
+    private String classId;   // °à¼¶±àºÅ (¶ÔÓ¦ student.cid)
+    private String majorId;   // ×¨Òµ±àºÅ (¶ÔÓ¦ student.mid)
+    private String departmentId;   // ÔºÏµ±àºÅ (¶ÔÓ¦ student.did)
 
     /**
-     * é»˜è®¤æ„é€ å‡½æ•°
+     * Ä¬ÈÏ¹¹Ôìº¯Êı
      */
     public StudentBasicInfo() {
     }
 
     /**
-     * å¸¦å‚æ•°çš„æ„é€ å‡½æ•°
+     * ´ø²ÎÊıµÄ¹¹Ôìº¯Êı
      *
-     * @param studentId     å­¦å·
-     * @param name     å§“å
-     * @param classId ç­çº§ç¼–å·
-     * @param majorId ä¸“ä¸šç¼–å·
-     * @param departmentId é™¢ç³»ç¼–å·
+     * @param studentId     Ñ§ºÅ
+     * @param name     ĞÕÃû
+     * @param classId °à¼¶±àºÅ
+     * @param majorId ×¨Òµ±àºÅ
+     * @param departmentId ÔºÏµ±àºÅ
      */
     public StudentBasicInfo(String studentId, String name, String classId, String majorId, String departmentId) {
         this.studentId = studentId;
@@ -38,7 +38,7 @@ public class StudentBasicInfo {
         this.departmentId = departmentId;
     }
 
-    // --- Getter æ–¹æ³• ---
+    // --- Getter ·½·¨ ---
 
     public String getStudentId() {
         return studentId;
@@ -60,7 +60,7 @@ public class StudentBasicInfo {
         return departmentId;
     }
 
-    // --- Setter æ–¹æ³• ---
+    // --- Setter ·½·¨ ---
 
     public void setStudentId(String studentId) {
         this.studentId = studentId;
@@ -82,13 +82,13 @@ public class StudentBasicInfo {
         this.departmentId = departmentId;
     }
 
-    // --- é‡å†™ equals(), hashCode(), toString() æ–¹æ³• ---
+    // --- ÖØĞ´ equals(), hashCode(), toString() ·½·¨ ---
 
     /**
-     * é‡å†™ equals æ–¹æ³•ï¼ŒåŸºäºå­¦å·åˆ¤æ–­ä¸¤ä¸ª StudentBasicInfo å¯¹è±¡æ˜¯å¦ç›¸ç­‰ã€‚
+     * ÖØĞ´ equals ·½·¨£¬»ùÓÚÑ§ºÅÅĞ¶ÏÁ½¸ö StudentBasicInfo ¶ÔÏóÊÇ·ñÏàµÈ¡£
      *
-     * @param o æ¯”è¾ƒå¯¹è±¡
-     * @return å¦‚æœç›¸ç­‰åˆ™è¿”å› trueï¼Œå¦åˆ™è¿”å› false
+     * @param o ±È½Ï¶ÔÏó
+     * @return Èç¹ûÏàµÈÔò·µ»Ø true£¬·ñÔò·µ»Ø false
      */
     @Override
     public boolean equals(Object o) {
@@ -99,9 +99,9 @@ public class StudentBasicInfo {
     }
 
     /**
-     * é‡å†™ hashCode æ–¹æ³•ï¼ŒåŸºäºå­¦å·ç”Ÿæˆå“ˆå¸Œç ã€‚
+     * ÖØĞ´ hashCode ·½·¨£¬»ùÓÚÑ§ºÅÉú³É¹şÏ£Âë¡£
      *
-     * @return å“ˆå¸Œç 
+     * @return ¹şÏ£Âë
      */
     @Override
     public int hashCode() {
@@ -109,9 +109,9 @@ public class StudentBasicInfo {
     }
 
     /**
-     * é‡å†™ toString æ–¹æ³•ï¼Œæ–¹ä¾¿æ‰“å° StudentBasicInfo å¯¹è±¡ä¿¡æ¯ã€‚
+     * ÖØĞ´ toString ·½·¨£¬·½±ã´òÓ¡ StudentBasicInfo ¶ÔÏóĞÅÏ¢¡£
      *
-     * @return StudentBasicInfo å¯¹è±¡çš„å­—ç¬¦ä¸²è¡¨ç¤º
+     * @return StudentBasicInfo ¶ÔÏóµÄ×Ö·û´®±íÊ¾
      */
     @Override
     public String toString() {
