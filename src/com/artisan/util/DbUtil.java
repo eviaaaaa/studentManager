@@ -39,9 +39,9 @@ public class DbUtil {
         try (InputStream input = DbUtil.class.getClassLoader().getResourceAsStream("database.properties")) {
             if (input != null) {
                 props.load(input);
-                dbUrl = props.getProperty("db.url", "jdbc:uxdb://192.168.29.130:52025/uxdb?currentSchema=university_schema");
+                dbUrl = props.getProperty("db.url", "jdbc:uxdb://localhost:52025/uxdb?currentSchema=university_schema");
                 dbUserName = props.getProperty("db.username", "uxdb");
-                dbPassword = props.getProperty("db.password", "123");
+                dbPassword = props.getProperty("db.password", "uxdb");
                 jdbcDriverName = props.getProperty("db.driver", "com.uxsino.uxdb.Driver");
                 logger.info("数据库配置加载成功");
             } else {

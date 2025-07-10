@@ -90,12 +90,9 @@ public class ConsoleUtil {
      */
     public static void printTitle(String title) {
         int titleWidth = getDisplayWidthForTable(title) + 4; // 左右各2个空格的padding
-        // 确保宽度为偶数，适配边框字符
-        if (titleWidth % 2 != 0) {
-            titleWidth++;
-        }
+        // 边框字符现在占1个位置，不需要偶数限制
 
-        String border = "═".repeat(titleWidth / 2); // "═"字符占2个位置
+        String border = "=".repeat(titleWidth); // "="字符占1个位置
         String titleRow = "║" + centerTextForTable(title, titleWidth) + "║";
 
         printColored("╔" + border + "╗", BLUE);
@@ -107,8 +104,8 @@ public class ConsoleUtil {
      * 打印分隔线
      */
     public static void printSeparator() {
-        // "─"字符占2个位置，所以30个"─"字符 = 60个字符宽度
-        printColored("─".repeat(30), CYAN);
+        // "-"字符占1个位置，所以60个"-"字符 = 60个字符宽度
+        printColored("-".repeat(60), CYAN);
     }
     
     /**
@@ -127,13 +124,10 @@ public class ConsoleUtil {
         int maxOptionWidth = getMaxOptionDisplayWidth(options);
         int maxLength = Math.max(titleWidth, maxOptionWidth) + 4; // 左右各2个空格padding
 
-        // 确保宽度为偶数，适配边框字符
-        if (maxLength % 2 != 0) {
-            maxLength++;
-        }
+        // 边框字符现在占1个位置，不需要偶数限制
 
-        String topBorder = "┌" + "─".repeat(maxLength / 2) + "┐";
-        String bottomBorder = "└" + "─".repeat(maxLength / 2) + "┘";
+        String topBorder = "┌" + "-".repeat(maxLength) + "┐";
+        String bottomBorder = "└" + "-".repeat(maxLength) + "┘";
 
         printColored(topBorder, CYAN);
 
@@ -229,9 +223,8 @@ public class ConsoleUtil {
     private static void printTableBorder(int[] widths, String left, String middle, String right) {
         System.out.print(left);
         for (int i = 0; i < widths.length; i++) {
-            // 由于"─"字符在等宽字体中占2个位置，所以重复次数需要是列宽的一半
-            int borderLength = widths[i] / 2;
-            System.out.print("─".repeat(borderLength));
+            // 使用"-"字符，占1个位置
+            System.out.print("-".repeat(widths[i]));
             if (i < widths.length - 1) {
                 System.out.print(middle);
             }
@@ -267,16 +260,16 @@ public class ConsoleUtil {
      */
     public static void printWelcomeBanner(String systemName, String version) {
         // 针对等宽字体优化的横幅设计
-        int bannerWidth = 60; // 固定宽度60字符（偶数，适配边框字符）
+        int bannerWidth = 60; // 固定宽度60字符
 
         // 准备要显示的文本行（避免emoji在等宽字体中的显示问题）
         String titleLine = "  " + systemName + "  ";
         String versionLine = "版本: " + version;
         String welcomeLine = "欢迎使用学生学籍管理系统！";
 
-        // 创建边框（"═"字符占2个位置）
-        String topBorder = "╔" + "═".repeat(bannerWidth / 2) + "╗";
-        String bottomBorder = "╚" + "═".repeat(bannerWidth / 2) + "╝";
+        // 创建边框（"="字符占1个位置）
+        String topBorder = "╔" + "=".repeat(bannerWidth) + "╗";
+        String bottomBorder = "╚" + "=".repeat(bannerWidth) + "╝";
         String emptyLine = "║" + " ".repeat(bannerWidth) + "║";
 
         // 创建内容行 - 使用表格专用的居中对齐方法
@@ -332,13 +325,9 @@ public class ConsoleUtil {
             }
         }
 
-        // 设置最小宽度限制，并确保宽度为偶数（因为边框字符占2个位置）
+        // 设置最小宽度限制（边框字符现在占1个位置，不需要偶数限制）
         for (int i = 0; i < widths.length; i++) {
             widths[i] = Math.max(10, widths[i]); // 最小10，不设置最大限制以显示完整内容
-            // 确保宽度为偶数，这样边框字符才能正确对齐
-            if (widths[i] % 2 != 0) {
-                widths[i]++;
-            }
         }
 
         return widths;
@@ -629,7 +618,7 @@ public class ConsoleUtil {
                 System.out.println("  " + headers[j] + ": " + value);
             }
             if (i < data.length - 1) {
-                printColored("  " + "─".repeat(30), CYAN);
+                printColored("  " + "-".repeat(30), CYAN);
             }
         }
     }
@@ -661,12 +650,9 @@ public class ConsoleUtil {
             }
         }
 
-        // 设置最小和最大宽度限制
+        // 设置最小和最大宽度限制（边框字符现在占1个位置，不需要偶数限制）
         for (int i = 0; i < widths.length; i++) {
             widths[i] = Math.max(10, Math.min(widths[i], 30)); // 最小10，最大30
-            if (widths[i] % 2 != 0) {
-                widths[i]++;
-            }
         }
 
         return widths;

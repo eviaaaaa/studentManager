@@ -14,7 +14,7 @@ import java.util.Scanner;
 /**
  * 学生学籍管理系统主应用程序 - 美化版
  * 提供创建/删除结构、插入/删除/更新数据以及查询数据等功能。
- *
+ *我的
  * @author llq-artisan
  * @version 2.0
  */
